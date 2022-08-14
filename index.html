@@ -23,22 +23,17 @@
 <div class = "container d-flex">
     <aside class="col-2 bg-warning">
         <h2>Search for a City:</h2>
-        <form class="" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-        <div class ="container d-flex flex-column p-2">
-            <button  class="btn btn-secondary m-1">City</button>
-            <button class="btn btn-secondary m-1">City</button>
-            <button class="btn btn-secondary m-1">City</button>
+            <input class=" me-2" id="inputSearchFld" >
+            <button class="btn btn-outline-success" id="doSearchBtn">Search</button>
+         <div class ="container d-flex flex-column p-2" id="cityList">
         </div>
     </aside>
     <div class = "col-12 bg-secondary">
         <div id="currentCity">
-            <h2 id="cityNDate">Current City and date</h2>
-            <p id="temp">temp</p>
-            <p id="wind">wind</p>
-            <p id="humidity">humidity</p>
+            <h2 id="cityNDate"></h2>
+            <p id="temp"></p>
+            <p id="wind"></p>
+            <p id="humidity"></p>
             
         </div>
         <div id="fiveDayForecast" class ="container d-flex flex-wrap">
