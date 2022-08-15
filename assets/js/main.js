@@ -1,6 +1,6 @@
 display("Denver");
 
-let shortcutCities = ['Denver','Seattle','New York','LA'];
+let shortcutCities = ['Denver'];
 //            <button  class="btn btn-secondary m-1">City</button>
 let cityList = $('#cityList');
 for(let i in shortcutCities){
@@ -20,13 +20,6 @@ let tgt = $(event.target);
 
 function display(cityName){
 
-    // first lets see if any cityCards exist to remove.
-    let bts = document.getElementsByClassName('tempDayCard');
-    let i = bts.length;
-    while(i--){
-        $(bts[i]).remove();
-    }
-
     let key = '22e15bd1c681f8e926726b2a9eb2d785';
     fetch('https://api.openweathermap.org/data/2.5/weather?q='+cityName+'&appid='+key+'&units=imperial')
     .then(function(respone){
@@ -34,10 +27,17 @@ function display(cityName){
     })
     .then(function(data){
         console.log(data);
+
+        let img = 'http://openweathermap.org/img/wn/'+data.weather[0].icon+ '.png';
+
+        console.log(img);
+
         $('#cityNDate').text(data.name);
         $('#temp').text("temp"+data.main.temp );
         $('#wind').text("wind"+data.wind.gust);
         $('#humidity').text("humidity"+data.main.humidity);
+        $('#weatherIcon').attr('src',img);
+
     })
     .catch(function(reponse){
         console.log(reponse,"ERROR?!");
@@ -50,7 +50,14 @@ function display(cityName){
         return respone.json();
     }
     ).then(function(data){
-    
+        console.log(data);
+    // first lets see if any cityCards exist to remove.
+    let bts = document.getElementsByClassName('tempDayCard');
+    let i = bts.length;
+    while(i--){
+        $(bts[i]).remove();
+    }
+
         // data in array we want is 6, 14, 22, 30, 38
         let days = [1,9,17,25,33];
         let foreCast = $('#fiveDayForecast');
@@ -64,10 +71,16 @@ function display(cityName){
             cBody.attr('class','card-body');
             card.append(cBody);
     
-    
-            let dtaz = new Date();
+            let icon = $('<img>');
+            let img = 'http://openweathermap.org/img/wn/'+cData.weather[0].icon+ '.png';       
+            icon.attr('class',"card-img-top")     ;
+            icon.attr('src',img);
+            cBody.append(icon);
+
+            
     
             let title = $('<h5>');
+
             title.attr('class','card-title');
             title.text(cData.dt_txt);
             cBody.append(title);
@@ -90,7 +103,7 @@ function display(cityName){
             para3.attr('class','card-text');
             para3.text('humidity'+cData.main.humidity);
             cBody.append(para3);
-            
+
             foreCast.append(card);
         }
         // 
@@ -110,5 +123,12 @@ function display(cityName){
 }
 
 $('#doSearchBtn').on('click',function(event){
-    display($('#inputSearchFld')[0].value);
+    let newCity = $('#inputSearchFld')[0].value;
+    display(newCity);
+    let newButton = $('<button>');
+    newButton.attr('class','btn btn-secondary m-1');
+    newButton.attr('data-cityID',newCity);
+    newButton.text(newCity);
+    cityList.append(newButton);
+
 })
