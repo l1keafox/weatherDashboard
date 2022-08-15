@@ -31,11 +31,11 @@ function display(cityName){
         let img = 'http://openweathermap.org/img/wn/'+data.weather[0].icon+ '.png';
 
         console.log(img);
-
-        $('#cityNDate').text(data.name);
-        $('#temp').text("temp"+data.main.temp );
-        $('#wind').text("wind"+data.wind.gust);
-        $('#humidity').text("humidity"+data.main.humidity);
+        let time = Date();
+        $('#cityNDate').text(data.name + "  :  "+ time );
+        $('#temp').text("temp :"+data.main.temp );
+        $('#wind').text("wind :"+data.wind.gust);
+        $('#humidity').text("humidity :"+data.main.humidity);
         $('#weatherIcon').attr('src',img);
 
     })
@@ -91,17 +91,17 @@ function display(cityName){
     
             let para = $('<p>');
             para.attr('class','card-text');
-            para.text('temp'+cData.main.feels_like);
+            para.text('temp :'+cData.main.feels_like);
             cBody.append(para);
     
             let para2 = $('<p>');
             para2.attr('class','card-text');
-            para2.text('wind'+cData.wind.speed);
+            para2.text('wind :'+cData.wind.speed);
             cBody.append(para2);
     
             let para3 = $('<p>');
             para3.attr('class','card-text');
-            para3.text('humidity'+cData.main.humidity);
+            para3.text('humidity :'+cData.main.humidity);
             cBody.append(para3);
 
             foreCast.append(card);
