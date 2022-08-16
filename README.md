@@ -10,7 +10,7 @@
     <br>
     <a href="https://l1keafox.github.io/weatherDashboard" target="no_blank">Click here for weatherDashboard </a> 
     <br>
-    <img src="./assets/images/sample.png" />
+    <img src="./assets/images/sample.PNG" />
   </body>
 
 </html>
