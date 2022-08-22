@@ -2,7 +2,7 @@ display("Denver");
 
 //let shortcutCities = ['Denver'];
 var shortcutCities = JSON.parse(localStorage.getItem("cList!"));
-if(!shortcutCities) shortcutCities = [];
+if(!shortcutCities) shortcutCities = ["Denver"];
 //            <button  class="btn btn-secondary m-1">City</button>
 let cityList = $('#cityList');
 for(let i in shortcutCities){
