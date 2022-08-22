@@ -1,6 +1,8 @@
 display("Denver");
 
-let shortcutCities = ['Denver'];
+//let shortcutCities = ['Denver'];
+var shortcutCities = JSON.parse(localStorage.getItem("BList!"));
+if(!shortcutCities) shortcutCities = [];
 //            <button  class="btn btn-secondary m-1">City</button>
 let cityList = $('#cityList');
 for(let i in shortcutCities){
@@ -130,5 +132,40 @@ $('#doSearchBtn').on('click',function(event){
     newButton.attr('data-cityID',newCity);
     newButton.text(newCity);
     cityList.append(newButton);
-
+    addCityToBtns(newCity);
 })
+
+function addCityToBtns(comm) {
+    console.log(comm);
+    if (comm === "\n              Select Commodity\n            " || comm == null || comm == undefined)
+      return;
+    var allCities = JSON.parse(localStorage.getItem("BList!"));
+    if (allCities === null) {
+        allCities = [];
+      console.log("New local Storage Created");
+    }
+    if (allCities.includes(comm)) {
+      //    console.log('Shoud Not add');
+    } else {
+        allCities.push(comm);
+    }
+    localStorage.setItem("BList!", JSON.stringify(allCities));
+  }
+  /*
+function doFastButtons(){
+    // here we shoud look for previous buttons to get rid of.
+    var lastGrade = JSON.parse(localStorage.getItem("BList!"));
+    let fastBtnMenu = $('#cityList');
+    console.log('here?',lastGrade,fastBtnMenu);
+    if(lastGrade){
+        for(let i = 0; i < lastGrade.length; i++){
+            let newBtn = $('<button>');
+            newBtn.text(lastGrade[i]);
+            newBtn.attr('data-comm',lastGrade[i]);
+            newBtn.attr('class','m-1 p-1');
+            fastBtnMenu.append(newBtn);
+        }
+    }
+    } 
+    
+doFastButtons();*/
