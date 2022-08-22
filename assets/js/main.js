@@ -140,7 +140,7 @@ function addCityToBtns(comm) {
       return;
     var allCities = JSON.parse(localStorage.getItem("cList!"));
     if (allCities === null) {
-        allCities = [];
+        allCities = ["Denver"];
       console.log("New local Storage Created");
     }
     if (allCities.includes(comm)) {
