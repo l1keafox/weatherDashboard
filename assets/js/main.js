@@ -74,7 +74,7 @@ function display(cityName){
             card.append(cBody);
     
             let icon = $('<img>');
-            let img = 'http://openweathermap.org/img/wn/'+cData.weather[0].icon+ '.png';       
+            let img = 'https://openweathermap.org/img/wn/'+cData.weather[0].icon+ '.png';       
             icon.attr('class',"card-img-top")     ;
             icon.attr('src',img);
             cBody.append(icon);
@@ -148,5 +148,5 @@ function addCityToBtns(comm) {
     } else {
         allCities.push(comm);
     }
-    localStorage.setItem("BList!", JSON.stringify(allCities));
+    localStorage.setItem("cList!", JSON.stringify(allCities));
   }
