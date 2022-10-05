@@ -1,4 +1,11 @@
-# 
+# Weather Dashboard
+
+A 5 day forecast for any city in the United States. 
+
+## Usage 
+
+  Enter an city in the input and press the button.
+  
 <!DOCTYPE html>
 <html lang="en-US">
 
